@@ -3,8 +3,7 @@
 ##Joseph Smith - 200340294##
 ############################
 
-param ([switch]$System, [switch]$Disks,
-       [switch]$Network)
+param ([switch]$System, [switch]$Disks, [switch]$Network)
 
 Import-Module Module200340294
 
