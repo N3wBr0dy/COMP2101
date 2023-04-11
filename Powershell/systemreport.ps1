@@ -3,12 +3,12 @@
 ##Joseph Smith - 200340294##
 ############################
 
-param ([switch]$SystemReport, [switch]$DisksReport,
-       [switch]$NetworkReport)
+param ([switch]$System, [switch]$Disks,
+       [switch]$Network)
 
 Import-Module Module200340294
 
-if ($SystemReport -eq $false -and $DisksReport -eq $false -and $NetworkReport -eq $false) {
+if ($System -eq $false -and $Disks -eq $false -and $Network -eq $false) {
 "------------------------
 System Report:
 ------------------------"
@@ -23,6 +23,8 @@ System Report:
     else {
 
       if ($System) {
+        "System Report:
+        "
         get-systemReport
         }
 
