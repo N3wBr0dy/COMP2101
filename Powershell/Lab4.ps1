@@ -6,11 +6,15 @@
 "SYSTEM INFORMATION REPORT:
 "
 
+function get-sysReport {
+
 "------------------------
 System Hardware Report
 ------------------------"
 
 Get-WmiObject win32_computersystem
+
+function get-osReport {
 
 "------------------------
 Operating System Report
@@ -24,6 +28,10 @@ Get-WmiObject -Class win32_operatingsystem |
         } 
         ft -AutoSize OsName,
                      Version
+}
+}
+
+function get-cpuReport {
 
 "------------------------
 Processor Report
@@ -44,12 +52,15 @@ Get-WmiObject -Class win32_processor |
                      L1CacheSize,
                      L2CacheSize,
                      L3CacheSize
+}
+
+function get-ramReport {
+
+param ([int]$totalCapacity = 0)
 
 "------------------------
 RAM Report
 ------------------------"
-
-$totalCapacity = 0
 
 Get-WmiObject -Class win32_physicalmemory |
         foreach {
@@ -70,6 +81,9 @@ Get-WmiObject -Class win32_physicalmemory |
 
 "Total RAM: ${totalCapacity}MB
 "
+}
+
+function get-diskReport {
 
 "------------------------
 Disk Report
@@ -91,6 +105,9 @@ foreach ($disk in $diskdrives) {
            }
       }
   }
+}
+
+function get-netReport {
 
 "------------------------
 Network Report
@@ -100,6 +117,9 @@ Get-ciminstance win32_networkadapterconfiguration |
      Where-Object ipenabled -eq True |
      Select-Object Discription, index, IPAddress, subnetmask, dnsdomain, dnsserver
         ft
+}
+
+function get-vidReport {
 
 "------------------------
 Video Card Report
@@ -114,6 +134,7 @@ Get-WmiObject -Class win32_videocontroller |
                 
                 }
         }
+}
 #################        
 ##END OF SCRIPT##
 ################# 
