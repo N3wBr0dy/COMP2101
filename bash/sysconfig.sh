@@ -15,15 +15,15 @@
 # Usage:
 #   error-message ["some text to print to stderr"]
 function error-message {
-         echo "error message: $1" >&2
+         echo "error: $1" >&2
 }
 
 # This function will send a message to stderr and exit with a failure status
 # Usage:
 #   error-exit ["some text to print to stderr" [exit-status]]
 function error-exit {
-         error_value="$1"
-          echo "send error message to file error_value" && exit
+         echo "Error, exiting with status: $?"
+  	 exit
 }
 #This function displays help information if the user asks for it on the command line or gives us a bad command line
 function displayhelp {
@@ -46,7 +46,7 @@ function cleanup {
 }
 # The temp files are all named similarly, "/tmp/somethinginfo.$$"
 # A trap command is used after the function definition to specify this function is to be run if we get a ^C while running
-trap "cleanup" SIGINT
+trap "cleanup" INT
 # End of section to be done for TASK
 # Remainder of script does not require any modification, but may need to be examined in order to create the functions for TASK
 
