@@ -111,6 +111,7 @@ foreach ($disk in $diskdrives) {
   }
 }
 
+##NOTE: network report changed from lab 3. This formatting was easier to read
 function get-netReport {
 
 "------------------------
