@@ -3,7 +3,7 @@
 ##Joseph Smith - 200340294##
 ############################
 
-Param ([switch]$SystemReport, [switch]$DisksReport,
+param ([switch]$SystemReport, [switch]$DisksReport,
        [switch]$NetworkReport)
 
 Import-Module Module200340294
