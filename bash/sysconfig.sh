@@ -15,18 +15,30 @@
 # Usage:
 #   error-message ["some text to print to stderr"]
 function error-message {
-
+         echo "error message: $1" >&2
 }
 
 # This function will send a message to stderr and exit with a failure status
 # Usage:
 #   error-exit ["some text to print to stderr" [exit-status]]
 function error-exit {
-
+         error_value="$1"
+          echo "send error message to file error_value" && exit1
 }
 #This function displays help information if the user asks for it on the command line or gives us a bad command line
 function displayhelp {
-
+        echo "Usage: `basename $0` [-h] -- program to display system information according to selected options. 
+          where :
+         -h|help: display help text
+         --host: generate report about host machine
+         --domain: generate report about domain
+         --ipconfig: generate report about IP address(es)
+         --os: generate report about OS
+         --cpu: generate report about cpu
+         --memory: generate report about system memory
+         --disk: generate report about system disk(s)
+         --printer: generate report about printer(s)
+         "
 }
 
 # This function will remove all the temp files created by the script
