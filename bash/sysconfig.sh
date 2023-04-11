@@ -28,7 +28,6 @@ function error-exit {
 #This function displays help information if the user asks for it on the command line or gives us a bad command line
 function displayhelp {
         echo "Usage: `basename $0` [-h] -- program to display system information according to selected options. 
-          where :
          -h|help: display help text
          --host: generate report about host machine
          --domain: generate report about domain
@@ -42,9 +41,12 @@ function displayhelp {
 }
 
 # This function will remove all the temp files created by the script
+function cleanup {
+	rm -f /tmp/*info.*
+}
 # The temp files are all named similarly, "/tmp/somethinginfo.$$"
 # A trap command is used after the function definition to specify this function is to be run if we get a ^C while running
-
+trap "cleanup" SIGINT
 # End of section to be done for TASK
 # Remainder of script does not require any modification, but may need to be examined in order to create the functions for TASK
 
