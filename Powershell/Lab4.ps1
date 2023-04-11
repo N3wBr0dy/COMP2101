@@ -6,6 +6,10 @@
 "SYSTEM INFORMATION REPORT:
 "
 
+####################
+##Create functions##
+####################
+
 function get-sysReport {
 
 "------------------------
@@ -13,6 +17,7 @@ System Hardware Report
 ------------------------"
 
 Get-WmiObject win32_computersystem
+}
 
 function get-osReport {
 
@@ -28,7 +33,6 @@ Get-WmiObject -Class win32_operatingsystem |
         } 
         ft -AutoSize OsName,
                      Version
-}
 }
 
 function get-cpuReport {
@@ -135,6 +139,19 @@ Get-WmiObject -Class win32_videocontroller |
                 }
         }
 }
+
+######################
+##Call new functions##
+######################
+
+get-sysReport
+get-osReport
+get-cpuReport
+get-ramReport
+get-diskReport
+get-netReport
+get-vidReport
+
 #################        
 ##END OF SCRIPT##
 ################# 
