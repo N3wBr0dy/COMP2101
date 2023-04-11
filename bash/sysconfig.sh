@@ -23,7 +23,7 @@ function error-message {
 #   error-exit ["some text to print to stderr" [exit-status]]
 function error-exit {
          error_value="$1"
-          echo "send error message to file error_value" && exit1
+          echo "send error message to file error_value" && exit
 }
 #This function displays help information if the user asks for it on the command line or gives us a bad command line
 function displayhelp {
